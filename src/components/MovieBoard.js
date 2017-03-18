@@ -27,12 +27,15 @@ class MovieBoard extends Component {
   }
   render() {
     //Prepare Movies to render
-    let moviesList = this.state.movies.map((movie) => {
-      return <Movie {...movie} className="col-md-4" key={movie.imdbID} />
-    })
-    return (
-      <div>
-        {moviesList.length > 0 ? moviesList : <h1>No Movies found</h1>}
+    let moviesList = <div className="row"> {this.state.movies.map((movie) => {
+      return (
+        <Movie {...movie} key={movie.imdbID}/>
+      );
+    })} </div>;
+      return (
+      <div className="well">
+        {/* {moviesList.length > 0 ? moviesList : <h1>No Movies found</h1>} */}
+        {moviesList}
       </div>
     );
   }

@@ -34,7 +34,7 @@ class App extends Component {
     return (
       <div>
         <input type="text" ref={(input) => {this.input = input; }} onChange={() => this.getMovies()} />
-        <div className="row">
+        <div>
           <MovieBoard movies={this.state.movies} />
         </div>
       </div>
