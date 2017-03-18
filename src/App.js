@@ -16,21 +16,33 @@ class App extends Component {
   }
 
   getMovies() {
-    let data = getMovieDetails(this.input.value);
-    Promise.resolve(data)
+    let movies = getMovieDetails(this.input.value);
+    Promise.resolve(movies)
           .then((data) => {
-            this.setState((prevState, props) => {
+            this.setState((prevState, propse) => {
               return {
-                movies: data.Search
+                movies: []
               }
-            })
+            });
+            data.forEach((moviePromise) => {
+              Promise.resolve(moviePromise)
+                .then((data) => {
+                  this.setState((prevState, props) => {
+                    return {
+                      movies: [...prevState.movies,data]
+                    }
+                  });
+                })
+                .catch(err => console.log(err));
           })
-          .catch((err) => {
-            console.log(err);
-          })
+        })
+         .catch(err => console.log(err));
+
+
   }
 
   render() {
+    // console.log(this.state.movies);
     return (
       <div>
         <input type="text" ref={(input) => {this.input = input; }} onChange={() => this.getMovies()} />
