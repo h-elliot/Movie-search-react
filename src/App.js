@@ -32,15 +32,13 @@ class App extends Component {
                         return {
                           movies: [...prevState.movies, data]
                         }
-                      } 
+                      }
                     });
                 })
                 .catch(err => console.log(err));
           })
         })
          .catch(err => console.log(err));
-
-
   }
 
   render() {

@@ -5,10 +5,10 @@ export const Movie = (props) => {
   return (
     <div className="col-md-3">
       {poster} <br/>
-      {props.Title} <br/>
-      {props.Type} <br/>
-      {props.Year} <br/>
-      {props.imdbID} <br/>
+      {props.Title} - {props.Year}  <br/>
+      {props.Plot} <br/>
+      <a href={props.tomatoURL} target="_blank"> <button className="btn btn-sm btn-success">Rotten Tomatoes</button> </a>
+      <hr />
     </div>
   );
 }
