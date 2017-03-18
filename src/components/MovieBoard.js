@@ -27,14 +27,13 @@ class MovieBoard extends Component {
   }
   render() {
     //Prepare Movies to render
-    let moviesList = <div className="row"> {this.state.movies.map((movie) => {
+    let moviesList = <div id="moviesList" className="row"> {this.state.movies.map((movie) => {
       return (
         <Movie {...movie} key={movie.imdbID}/>
       );
     })} </div>;
       return (
       <div className="well">
-        {/* {moviesList.length > 0 ? moviesList : <h1>No Movies found</h1>} */}
         {moviesList}
       </div>
     );

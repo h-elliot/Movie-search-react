@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import './App.css';
 import {getMovieDetails} from './movie.js';
 import MovieBoard from './components/MovieBoard.js';
+import {Banner} from './components/Banner.js';
 
 class App extends Component {
   constructor(props) {
@@ -45,7 +46,8 @@ class App extends Component {
     // console.log(this.state.movies);
     return (
       <div>
-        <input type="text" ref={(input) => {this.input = input; }} onChange={() => this.getMovies()} />
+        <Banner />
+        <input id="searchBox" className="form-control" type="text" ref={(input) => {this.input = input; }} onChange={() => this.getMovies()} placeholder="Search for movie here..." />
         <div>
           <MovieBoard movies={this.state.movies} />
         </div>
