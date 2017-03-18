@@ -1,14 +1,14 @@
 import React from 'react';
 
-export const Movie = ({Poster, Title, Type, Year, imdbID}) => {
-  let poster = Poster === 'N/A' ? <img src="" alt={Title} height="250" width="170" /> : <img src={Poster} alt={Title} height="250" width="170" />
+export const Movie = (props) => {
+  let poster = props.Poster === 'N/A' ? <img src="" alt={props.Title} height="250" width="170" /> : <img src={props.Poster} alt={props.Title} height="250" width="170" />
   return (
     <div className="col-md-3">
       {poster} <br/>
-      {Title} <br/>
-      {Type} <br/>
-      {Year} <br/>
-      {imdbID} <br/>
+      {props.Title} <br/>
+      {props.Type} <br/>
+      {props.Year} <br/>
+      {props.imdbID} <br/>
     </div>
   );
 }

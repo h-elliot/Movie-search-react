@@ -27,11 +27,13 @@ class App extends Component {
             data.forEach((moviePromise) => {
               Promise.resolve(moviePromise)
                 .then((data) => {
-                  this.setState((prevState, props) => {
-                    return {
-                      movies: [...prevState.movies,data]
-                    }
-                  });
+                    this.setState((prevState, props) => {
+                      if (data.Type === 'movie') {
+                        return {
+                          movies: [...prevState.movies, data]
+                        }
+                      } 
+                    });
                 })
                 .catch(err => console.log(err));
           })
