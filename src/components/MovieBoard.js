@@ -1,23 +1,39 @@
 import React, { Component } from 'react';
-
+import {Movie} from './Movie.js';
 
 class MovieBoard extends Component {
   constructor(props) {
     super(props);
-    this.movies = [];
+    // this.movies = [];
+    this.state = {
+      movies: []
+    }
+    this.dummyMovie = {
+      Poster: "N/A",
+      Title: "No Results",
+      Type: "",
+      Year: "",
+      imdbID: ""
+    }
   }
   componentWillReceiveProps(nextProps) {
-    console.log(nextProps);
-    this.movies = typeof nextProps.movies !== 'undefined' ? nextProps.movies:[] ;
+    // Make the movie list as empty array when the results are not there which gives undefined object
+    this.setState((prevState, props) => {
+      return {
+        movies: typeof nextProps.movies !== 'undefined' ? nextProps.movies:[]
+      }
+    })
+    // this.movies = typeof nextProps.movies !== 'undefined' ? nextProps.movies:[] ;
   }
   render() {
-    let movieList = this.movies.map((movie) => {
-      return <li key={movie.imdbID}>{movie.Title}</li>
-    });
+    //Prepare Movies to render
+    let moviesList = this.state.movies.map((movie) => {
+      return <Movie {...movie} className="col-md-4" key={movie.imdbID} />
+    })
     return (
-      <ul>
-        {movieList.length > 0 ? movieList : <h1>No Movies found</h1>}
-      </ul>
+      <div>
+        {moviesList.length > 0 ? moviesList : <h1>No Movies found</h1>}
+      </div>
     );
   }
 }

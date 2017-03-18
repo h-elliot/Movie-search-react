@@ -11,6 +11,10 @@ class App extends Component {
     }
   }
 
+  componentDidMount() {
+    this.input.focus();
+  }
+
   getMovies() {
     let data = getMovieDetails(this.input.value);
     Promise.resolve(data)
@@ -30,7 +34,9 @@ class App extends Component {
     return (
       <div>
         <input type="text" ref={(input) => {this.input = input; }} onChange={() => this.getMovies()} />
-        <MovieBoard movies={this.state.movies} />
+        <div className="row">
+          <MovieBoard movies={this.state.movies} />
+        </div>
       </div>
     );
   }
