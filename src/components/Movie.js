@@ -7,7 +7,8 @@ export const Movie = (props) => {
     <div className="col-md-3">
       {poster} <br/>
       {props.Title} - {props.Year}  <br/>
-      {props.Plot} <br/>
+      IMDB Rating: {props.imdbRating} <br/>
+      Plot: {props.Plot} <br/>
       <a href={imdbURL} target="_blank"> <button className="btn btn-sm btn-success">IMDb</button> </a>
       <a href={props.tomatoURL} target="_blank"> <button className="btn btn-sm btn-success">Rotten Tomatoes</button> </a>
       <hr />
