@@ -3,6 +3,7 @@ const axios = require('axios');
 
 const getMovieIds = (movieName) => {
   let url = `https://www.omdbapi.com/?s=${movieName}`;
+  console.log("Url"+url);
     let getIds = axios.get(url)
         .then((response) => {
           let imdbIds = response.data.Search.map((movie) => {

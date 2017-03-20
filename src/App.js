@@ -17,7 +17,10 @@ class App extends Component {
   }
 
   getMovies() {
-    let movies = getMovieDetails(this.input.value);
+    // console.log("Value: "+this.input.value);
+    // Normalize spaces with + to send to api
+    let normalizedMovieTitle = this.input.value.replace(/\s/g,"+");
+    let movies = getMovieDetails(normalizedMovieTitle);
     Promise.resolve(movies)
           .then((data) => {
             this.setState((prevState, propse) => {
