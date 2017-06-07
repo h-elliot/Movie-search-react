@@ -2,7 +2,7 @@ const axios = require('axios');
 
 
 const getMovieIds = (movieName) => {
-  let url = `https://www.omdbapi.com/?s=${movieName}`;
+  let url = `https://www.omdbapi.com/?apikey=b10b7c2d&s=${movieName}`;
   console.log("Url"+url);
     let getIds = axios.get(url)
         .then((response) => {
@@ -21,7 +21,7 @@ export const getMovieDetails = (movieName) => {
     const fullDetails =  Promise.resolve(ids)
         .then((data) => {
         let urls = data.map((id) => {
-          return `https://www.omdbapi.com/?i=${id}&plot=full&tomatoes=true`;
+          return `https://www.omdbapi.com/?apikey=b10b7c2d&i=${id}&plot=full&tomatoes=true`;
         })
         let movies = urls.map((url) => {
           return axios.get(url).then((response) => {
