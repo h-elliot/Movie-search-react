@@ -1,34 +1,39 @@
-const axios = require('axios');
+const axios = require("axios");
 
-
-const getMovieIds = (movieName) => {
+const getMovieIds = async movieName => {
   let url = `https://www.omdbapi.com/?apikey=b10b7c2d&s=${movieName}`;
-  console.log("Url"+url);
-    let getIds = axios.get(url)
-        .then((response) => {
-          let imdbIds = response.data.Search.map((movie) => {
-            return movie.imdbID;
-          })
-          return imdbIds;
-        })
-        .catch(err => console.log(err));
-  return getIds;
-}
+
+  let raw_data_for_url = await axios.get(url);
+
+  // Return empty array if no results with name
+  if (raw_data_for_url.data.Response === "False") {
+    return [];
+  }
+
+  let ids = raw_data_for_url.data.Search.map(movie => movie.imdbID);
+  // console.log(ids);
+  return ids;
+
+  // return getIds;
+};
+
+export const getMovieDetails = async movieName => {
+  let ids = await getMovieIds(movieName);
+
+  // Return emptry array if no results
+  if (ids.length === 0) {
+    console.info(`No results for the key "${movieName}"`);
+    return [];
+  }
+  const movie_urls_with_ids = ids.map(id => {
+    return `https://www.omdbapi.com/?apikey=b10b7c2d&i=${id}&plot=full&tomatoes=true`;
+  });
+
+  let fullMovieData = movie_urls_with_ids.map(async url => {
+    const single_movie_data = await axios.get(url);
+    return single_movie_data.data;
+  });
 
 
-export const getMovieDetails = (movieName) => {
-    let ids = getMovieIds(movieName);
-    const fullDetails =  Promise.resolve(ids)
-        .then((data) => {
-        let urls = data.map((id) => {
-          return `https://www.omdbapi.com/?apikey=b10b7c2d&i=${id}&plot=full&tomatoes=true`;
-        })
-        let movies = urls.map((url) => {
-          return axios.get(url).then((response) => {
-            return response.data;
-        })
-      })
-      return movies;
-    }).catch(err => console.log(err));
-  return fullDetails;
-}
+  return fullMovieData;
+};
