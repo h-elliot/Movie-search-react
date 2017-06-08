@@ -3,6 +3,7 @@ import "./App.css";
 import { getMovieDetails } from "./movie.js";
 import MovieBoard from "./components/MovieBoard.js";
 import { Banner } from "./components/Banner.js";
+import { Footer } from "./components/Footer.js";
 
 class App extends Component {
   constructor(props) {
@@ -46,10 +47,14 @@ class App extends Component {
             this.input = input;
           }}
           onChange={() => this.getMovies()}
-          placeholder="Search for movie here..."
+          placeholder="Search for a movie here..."
         />
         <div>
           <MovieBoard movies={this.state.movies} />
+        </div>
+        <hr />
+        <div>
+          <Footer />
         </div>
       </div>
     );

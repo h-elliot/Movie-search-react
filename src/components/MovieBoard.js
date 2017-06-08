@@ -31,10 +31,10 @@ class MovieBoard extends Component {
   render() {
     //Prepare Movies to render
     let moviesList = (
-      <div id="moviesList" className="row">
-        {this.state.movies.map(movie => {
-          return <div className="movie-card"  key={movie.imdbID}><Movie {...movie}/></div>;
-        })}
+      <div id="moviesList">
+          {this.state.movies.map(movie => {
+            return <Movie {...movie} key={movie.imdbID} />;
+          })}
       </div>
     );
     return (

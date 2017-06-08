@@ -1,4 +1,28 @@
 #searchBox {
+  background-color: #666A73; 
   color: white;
-  background-color: #2E4057;
+}
+
+#searchBox::placeholder {
+  color: #D9D1C7;
+}
+
+.row {
+  color: #F2EDE4;
+}
+
+.movie-card {
+  padding: 2rem;
+}
+.footer {
+  color: #F2EDE4;
+}
+
+a#my-twitter-id, a#licence
+{
+    text-decoration: none;
+    color: #FFB900;
+}
+a#my-twitter-id:hover, a#licence:hover{
+    color: #F2EDE4;
 }
