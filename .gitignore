@@ -38,3 +38,5 @@ jspm_packages
 
 # No build directories
 build
+
+.env
