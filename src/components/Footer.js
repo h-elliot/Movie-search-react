@@ -6,7 +6,7 @@ export const Footer = () => {
     <div className="footer text-center row p-4 font-weight-normal" >
       <div className="text-center">
         <a
-          id="licence"
+          id="license"
           target="_blank"
           href="https://github.com/saisandeepvaddi/movie-search-react"
         >
@@ -24,9 +24,9 @@ export const Footer = () => {
         </a>
       </div>
       <div className="text-center">
-        Licenced under &nbsp;
+        Licensed under &nbsp;
         <a
-          id="licence"
+          id="license"
           target="_blank"
           href="https://github.com/saisandeepvaddi/movie-search-react/blob/master/LICENSE"
         >

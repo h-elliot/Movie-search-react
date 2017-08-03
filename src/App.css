@@ -18,11 +18,11 @@
   color: #F2EDE4;
 }
 
-a#my-twitter-id, a#licence
+a#my-twitter-id, a#license
 {
     text-decoration: none;
     color: #FFB900;
 }
-a#my-twitter-id:hover, a#licence:hover{
+a#my-twitter-id:hover, a#license:hover{
     color: #F2EDE4;
 }
