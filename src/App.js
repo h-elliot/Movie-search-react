@@ -6,6 +6,7 @@ import MovieBoard from "./components/MovieBoard.js";
 import { Banner } from "./components/Banner.js";
 import { Footer } from "./components/Footer.js";
 import Message from "./components/Message";
+import debounce from "lodash/debounce";
 
 class App extends Component {
   componentDidMount() {
@@ -35,7 +36,10 @@ class App extends Component {
           ref={input => {
             this.input = input;
           }}
-          onChange={this.getMovies.bind(this)}
+          onChange={debounce(this.getMovies.bind(this), 500, {
+            leading: false,
+            trailing: true
+          })}
           placeholder="Search for a movie here..."
         />
         <div>

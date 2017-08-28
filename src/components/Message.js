@@ -1,4 +1,5 @@
 import React from "react";
+import DotProgress from "./DotProgress";
 
 const containerStyle = {
   display: "flex",
@@ -12,10 +13,16 @@ const messageStyle = {
 };
 
 const Message = ({ message }) => {
+  const msg =
+    message === "Searching for movies"
+      ? <div>
+          {message} <DotProgress />
+        </div>
+      : message;
   return (
     <div style={containerStyle}>
       <h3 style={messageStyle}>
-        {message}
+        {msg}
       </h3>
     </div>
   );
