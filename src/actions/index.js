@@ -29,8 +29,18 @@ export const fetchSuccess = movies => {
 
 const getMovies = async moviesName => {
   const multipleMoviePromises = await getMovieDetails(moviesName);
-  const movies = await Promise.all(multipleMoviePromises);
-  return movies;
+
+  console.log(`Promise Length: ${multipleMoviePromises.length}`);
+
+  const movies = await Promise.all(multipleMoviePromises).catch(e =>
+    console.log("Error fetching movies")
+  );
+
+  const filteredMovies = movies.filter(movie => movie !== 1);
+
+  console.log(`Movies Length: ${filteredMovies.length}`);
+
+  return filteredMovies.length > 0 ? filteredMovies : [];
 };
 
 export const fetchMovies = movieName => {
@@ -38,7 +48,7 @@ export const fetchMovies = movieName => {
     dispatch(fetchRequest());
     movieName === ""
       ? dispatch(fetchFailure("Search for movies"))
-      : getMovies(movieName)
+      : getMovies(movieName.toLowerCase())
           .then(movies => {
             movies.length === 0
               ? dispatch(fetchFailure("No Movies Found"))

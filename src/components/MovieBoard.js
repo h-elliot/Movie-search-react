@@ -7,16 +7,14 @@ const MovieBoard = ({ movies }) => {
   let moviesList = (
     <div id="moviesList">
       {movies.map(movie => {
-        return <Movie {...movie} key={movie.imdbID} />;
+        return <Movie {...movie.data} key={movie.data.imdbID} />;
       })}
     </div>
   );
   return (
     <div>
       <hr />
-      <div>
-        {moviesList}
-      </div>
+      <div>{moviesList}</div>
     </div>
   );
 };
