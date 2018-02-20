@@ -4,6 +4,8 @@ ReactJS based Movies Search App
 
 Current working demo available at [movie-search-react](https://saisandeepvaddi.github.io/movie-search-react/)   
 
+Same application built again ground-up at [here](https://github.com/saisandeepvaddi/movie-search)
+
 # Development
 
 ## Pre-requisite
